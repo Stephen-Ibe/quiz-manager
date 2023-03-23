@@ -4,4 +4,7 @@ export class CreateQuestionDto {
   @IsNotEmpty({ message: 'Question must have a title' })
   @Length(3, 255)
   question: string;
+
+  @IsNotEmpty()
+  quizId: number;
 }
