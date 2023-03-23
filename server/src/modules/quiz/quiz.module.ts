@@ -4,9 +4,10 @@ import { QuizController } from './quiz.controller';
 import { QuizService } from './quiz.service';
 
 import { TypeOrmExModule } from 'src/typeorm-ex/typeorm-ex.module';
+import { QuestionController } from './question.controller';
 
 @Module({
-  controllers: [QuizController],
+  controllers: [QuizController, QuestionController],
   imports: [TypeOrmExModule.forCustomRepository([QuizRepository])],
   providers: [QuizService],
 })

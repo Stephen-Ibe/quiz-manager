@@ -19,6 +19,7 @@ export class QuizService {
       where: {
         id,
       },
+      relations: ['questions'],
     });
   }
 
