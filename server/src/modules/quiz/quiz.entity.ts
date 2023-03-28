@@ -30,6 +30,6 @@ export class Quiz extends BaseEntity {
   })
   isActive: boolean;
 
-  @OneToMany(() => Question, (question) => question)
+  @OneToMany(() => Question, (question) => question.quiz)
   questions: Question[];
 }
