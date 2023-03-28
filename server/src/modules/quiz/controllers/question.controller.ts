@@ -5,10 +5,10 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { CreateQuestionDto } from './dto/CreateQuestion.dto';
-import { QuestionService } from './question.service';
-import { QuizService } from './quiz.service';
-import { Question } from './question.entity';
+import { CreateQuestionDto } from '../dto/CreateQuestion.dto';
+import { QuizService } from '../services/quiz.service';
+import { Question } from '../entities/question.entity';
+import { QuestionService } from '../services/question.service';
 
 @Controller('question')
 export class QuestionController {
