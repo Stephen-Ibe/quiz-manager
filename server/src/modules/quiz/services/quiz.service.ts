@@ -15,7 +15,6 @@ export class QuizService {
     return await this.quizRepository
       .createQueryBuilder('q')
       .leftJoinAndSelect('q.questions', 'qt')
-      .leftJoinAndSelect('qt.options', 'o')
       .getMany();
   }
 
