@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, Length, Matches } from 'class-validator';
-import { REGEX } from 'src/utils';
+import { MESSAGES, REGEX } from 'src/utils';
 
 export class UserRegisterRequestDto {
   @IsNotEmpty()
@@ -11,11 +11,15 @@ export class UserRegisterRequestDto {
 
   @IsNotEmpty()
   @Length(8, 24)
-  @Matches(REGEX.PASSWORD_RULE)
+  @Matches(REGEX.PASSWORD_RULE, {
+    message: MESSAGES.PASSWORD_RULE_MESSAGE,
+  })
   password: string;
 
   @IsNotEmpty()
   @Length(8, 24)
-  @Matches(REGEX.PASSWORD_RULE)
+  @Matches(REGEX.PASSWORD_RULE, {
+    message: MESSAGES.PASSWORD_RULE_MESSAGE,
+  })
   confirm: string;
 }
