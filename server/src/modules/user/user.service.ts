@@ -4,7 +4,14 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UserService {
-  handleUserRegistration(userData: UserRegisterRequestDto) {
+  async handleUserRegistration(
+    userData: UserRegisterRequestDto,
+  ): Promise<User> {
     const user = new User();
+    user.name = userData.name;
+    user.email = userData.email;
+    user.password = userData.password;
+
+    return await user.save();
   }
 }
