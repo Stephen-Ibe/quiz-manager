@@ -14,4 +14,8 @@ export class UserService {
 
     return await user.save();
   }
+
+  async getUSerByEmail(email: string) {
+    return User.findOne({ where: { email } });
+  }
 }
