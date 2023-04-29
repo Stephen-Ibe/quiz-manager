@@ -7,6 +7,7 @@ import { QuizModule } from './modules/quiz/quiz.module';
 import { ConfigModule } from '@nestjs/config';
 import { dataSourceOptions } from './config/data-source';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UserModule } from './modules/user/user.module';
     TypeOrmModule.forRoot(dataSourceOptions), // TypeOrmModule.forRootAsync(typeOrmConfigAsync),
     QuizModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
