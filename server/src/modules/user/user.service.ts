@@ -15,7 +15,7 @@ export class UserService {
     return await user.save();
   }
 
-  async getUSerByEmail(email: string) {
+  async getUserByEmail(email: string): Promise<User | unknown> {
     return User.findOne({ where: { email } });
   }
 }
