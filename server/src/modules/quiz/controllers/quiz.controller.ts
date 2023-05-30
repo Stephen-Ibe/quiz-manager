@@ -18,7 +18,7 @@ import { ApiTags } from '@nestjs/swagger';
 export class QuizController {
   constructor(private readonly quizService: QuizService) {}
 
-  @Get()
+  @Get('/')
   async getAllQuiz(): Promise<Quiz[]> {
     return await this.quizService.getAllQuiz();
   }
