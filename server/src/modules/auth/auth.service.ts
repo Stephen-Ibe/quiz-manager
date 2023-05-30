@@ -13,7 +13,10 @@ export class AuthService {
     const user = await this.userService.getUserByEmail(email);
 
     if (!user) throw new BadRequestException();
+
     // if (!bcrypt.compare(password, user?.password))
     //   throw new UnauthorizedException();
+
+    return user;
   }
 }
