@@ -36,7 +36,9 @@ export class QuizService {
   }
 
   async paginate(options: IPaginationOptions): Promise<Pagination<Quiz>> {
-    const qb = this.quizRepository.createQueryBuilder('q');
+    const qb = this.quizRepository
+      .createQueryBuilder('q')
+      .leftJoinAndSelect('q.questions', 'qt');
     qb.orderBy('q.id', 'DESC');
 
     return paginate<Quiz>(qb, options);
