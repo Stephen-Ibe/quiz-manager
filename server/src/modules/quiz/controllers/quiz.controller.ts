@@ -7,13 +7,11 @@ import {
   ParseIntPipe,
   Post,
   Query,
-  UsePipes,
-  ValidationPipe,
 } from '@nestjs/common';
 import { QuizService } from '../services/quiz.service';
 import { CreateQuizDto } from '../dto/CreateQuiz.dto';
 import { Quiz } from '../entities/quiz.entity';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { IPaginationOptions, Pagination } from 'nestjs-typeorm-paginate';
 
 @ApiTags('Quiz')
@@ -22,6 +20,7 @@ export class QuizController {
   constructor(private readonly quizService: QuizService) {}
 
   @Get('/')
+  @ApiOkResponse({ description: 'All quizzes', type: Quiz })
   async getAllQuiz(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 1,
@@ -40,7 +39,6 @@ export class QuizController {
   }
 
   @Post()
-  @UsePipes(ValidationPipe)
   async createQuiz(@Body() quizData: CreateQuizDto) {
     return await this.quizService.createNewQuiz(quizData);
   }
